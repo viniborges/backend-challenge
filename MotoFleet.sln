@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{BBC50BE5-3C15-4B64-996C-A6D1F9C22509}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4AD275C1-A7C5-4FCC-B357-6B4B2ADC77DE}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		Directory.Build.props = Directory.Build.props
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotoFleet.Domain", "src\MotoFleet.Domain\MotoFleet.Domain.csproj", "{2DF5ACF6-6D2C-423C-B7D9-F974BB613646}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotoFleet.SharedKernel", "src\MotoFleet.SharedKernel\MotoFleet.SharedKernel.csproj", "{F606B29C-E409-4153-A6DB-29831BF4904B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotoFleet.Infrastructure", "src\MotoFleet.Infrastructure\MotoFleet.Infrastructure.csproj", "{C48FC5D5-5438-4BC6-9820-1C6AD94E20B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotoFleet.Application", "src\MotoFleet.Application\MotoFleet.Application.csproj", "{99E4D99B-1025-46ED-A40B-77412FB63838}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotoFleet.Api", "src\MotoFleet.Api\MotoFleet.Api.csproj", "{4FA4BEDD-E169-462E-BEB2-E015C9AEE07A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2DF5ACF6-6D2C-423C-B7D9-F974BB613646} = {BBC50BE5-3C15-4B64-996C-A6D1F9C22509}
+		{F606B29C-E409-4153-A6DB-29831BF4904B} = {BBC50BE5-3C15-4B64-996C-A6D1F9C22509}
+		{C48FC5D5-5438-4BC6-9820-1C6AD94E20B4} = {BBC50BE5-3C15-4B64-996C-A6D1F9C22509}
+		{99E4D99B-1025-46ED-A40B-77412FB63838} = {BBC50BE5-3C15-4B64-996C-A6D1F9C22509}
+		{4FA4BEDD-E169-462E-BEB2-E015C9AEE07A} = {BBC50BE5-3C15-4B64-996C-A6D1F9C22509}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2DF5ACF6-6D2C-423C-B7D9-F974BB613646}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DF5ACF6-6D2C-423C-B7D9-F974BB613646}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DF5ACF6-6D2C-423C-B7D9-F974BB613646}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DF5ACF6-6D2C-423C-B7D9-F974BB613646}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F606B29C-E409-4153-A6DB-29831BF4904B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F606B29C-E409-4153-A6DB-29831BF4904B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F606B29C-E409-4153-A6DB-29831BF4904B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F606B29C-E409-4153-A6DB-29831BF4904B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C48FC5D5-5438-4BC6-9820-1C6AD94E20B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C48FC5D5-5438-4BC6-9820-1C6AD94E20B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C48FC5D5-5438-4BC6-9820-1C6AD94E20B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C48FC5D5-5438-4BC6-9820-1C6AD94E20B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99E4D99B-1025-46ED-A40B-77412FB63838}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99E4D99B-1025-46ED-A40B-77412FB63838}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99E4D99B-1025-46ED-A40B-77412FB63838}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99E4D99B-1025-46ED-A40B-77412FB63838}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FA4BEDD-E169-462E-BEB2-E015C9AEE07A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FA4BEDD-E169-462E-BEB2-E015C9AEE07A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FA4BEDD-E169-462E-BEB2-E015C9AEE07A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FA4BEDD-E169-462E-BEB2-E015C9AEE07A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

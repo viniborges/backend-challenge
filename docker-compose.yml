@@ -1,0 +1,6 @@
+﻿services:
+  motofleet.api:
+    image: motofleet.api
+    build:
+      context: .
+      dockerfile: src/MotoFleet.Api/Dockerfile
