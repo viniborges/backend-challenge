@@ -1,28 +1,26 @@
-﻿using MotoFleet.Application.Abstractions.Motorcycles;
+﻿using MotoFleet.Application.Abstractions.Motorcycle;
+using MotoFleet.Application.DTOs.Motorcycles;
 using MotoFleet.Domain.Motorcycles;
 using MotoFleet.SharedKernel;
 
 namespace MotoFleet.Application.UseCases.Motorcycles;
 
-public record CreateMotorcycleRequest(string Identificador, ushort Ano, string Modelo, string Placa);
-
 public class CreateMotorcycle(IMotorcycleRepository repository, IDateTimeProvider dateTimeProvider)
 {
-   
-
-    public async Task<Result<string>> Create(CreateMotorcycleRequest request, CancellationToken cancellationToken)
+    public async Task<Result<Motorcycle>> Handle(CreateMotorcycleRequestDto requestDto, CancellationToken cancellationToken)
     {
-        var motorcycle = new Motorcycle(
-            Guid.NewGuid(), 
-            request.Identificador, 
-            request.Ano, 
-            request.Modelo, 
-            request.Placa,
-            dateTimeProvider.UtcNow);
+        var existentMotorcycle = await repository.GetByPlate(requestDto.Placa, cancellationToken);
         
-        await repository.AddAsync(motorcycle, cancellationToken);
+        if (existentMotorcycle.Data.Any())
+        {
+            return Result<Motorcycle>.Failure(MotorcycleErrors.PlateNotUnique(requestDto.Placa));
+        }
+
+        var motorcycle = requestDto.CreatedAt(dateTimeProvider.UtcNow).ToEntity();
         
-        return Result<string>.Success(motorcycle.Id.ToString());
+        var result = await repository.AddAsync(motorcycle, cancellationToken);
+        Console.WriteLine(result);
+        return Result<Motorcycle>.Success(motorcycle);
     }
     
 }

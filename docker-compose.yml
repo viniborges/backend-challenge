@@ -1,6 +1,24 @@
 ﻿services:
   motofleet.api:
     image: motofleet.api
+    container_name: motofleet.api
     build:
       context: .
       dockerfile: src/MotoFleet.Api/Dockerfile
+    ports:
+      - "5000:5000"
+      - "5001:5001"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    
+  motofleet.database:
+    image: postgres:latest
+    container_name: motofleet.database
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: motofleet
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./.containers/motofleet-db:/var/lib/postgresql/data
