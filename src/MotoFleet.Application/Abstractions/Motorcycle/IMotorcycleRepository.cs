@@ -8,4 +8,6 @@ public interface IMotorcycleRepository
     Task<Result<List<Domain.Motorcycles.Motorcycle>>> GetByPlate(string? plate, CancellationToken cancellationToken);
     Task<Result<List<Domain.Motorcycles.Motorcycle>>> GetAll(CancellationToken cancellationToken);
     Task<Result<Domain.Motorcycles.Motorcycle>> GetById(Guid id, CancellationToken cancellationToken);
+    Task<int> UpdatePlateAsync(Guid id, string plate, CancellationToken cancellationToken);
+    Task<int> DeleteAsync(Guid id, CancellationToken cancellationToken);
 }

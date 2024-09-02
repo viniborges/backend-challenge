@@ -6,8 +6,6 @@ namespace MotoFleet.Api.Endpoints;
 
 public static class MotorcycleEndpoints
 {
-    public sealed record Request(string Email, string FirstName, string LastName, string Password);
-
     public static void MapMotorcycleEndpoints(this IEndpointRouteBuilder app)
     {
         app.MapPost("/motos", async (
@@ -45,6 +43,33 @@ public static class MotorcycleEndpoints
                     : Results.NotFound(result.ErrorMessage);
             })
             .WithName("GetMotorcycleById")
+            .WithOpenApi();
+        
+        app.MapPut("/motos/{id:guid}/placa", async (
+                Guid id,
+                [FromBody] UpdatePlateMotorcycleDto input,
+                UpdatePlateMotorcycle updatePlateMotorcycle,
+                CancellationToken cancellationToken) =>
+            {
+                var result = await updatePlateMotorcycle.Handle(id, input.placa, cancellationToken);
+                return result.IsSuccess
+                    ? Results.Ok(result.Data)
+                    : Results.BadRequest(result.ErrorMessage);
+            })
+            .WithName("UpdatePlateMotorcycle")
+            .WithOpenApi();
+        
+        app.MapDelete("/motos/{id:guid}", async (
+                Guid id,
+                DeleteMotorcycle deleteMotorcycle,
+                CancellationToken cancellationToken) =>
+            {
+                var result = await deleteMotorcycle.Handle(id, cancellationToken);
+                return result.IsSuccess
+                    ? Results.Ok(result.Data)
+                    : Results.BadRequest(result.ErrorMessage);
+            })
+            .WithName("DeleteMotorcycle")
             .WithOpenApi();
     }
 }

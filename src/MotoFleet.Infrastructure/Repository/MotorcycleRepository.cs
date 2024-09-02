@@ -42,4 +42,29 @@ public class MotorcycleRepository(ApplicationDbContext context) : IMotorcycleRep
             ? Result<Motorcycle>.Failure(MotorcycleErrors.NotFound(id)) 
             : Result<Motorcycle>.Success(result);
     }
+
+    public async Task<int> UpdatePlateAsync(Guid id, string plate, CancellationToken cancellationToken)
+    {
+        var result = await context.Motorcycles
+            .Where(m => m.Id == id)
+            .ExecuteUpdateAsync(x =>
+                x.SetProperty(m => m.Plate, plate), cancellationToken);
+
+        await context.SaveChangesAsync(cancellationToken);
+
+        return result;
+    }
+    
+    public async Task<int> DeleteAsync(Guid id, CancellationToken cancellationToken)
+    {
+        var result = await context.Motorcycles
+            .Where(m => m.Id == id)
+            .ExecuteDeleteAsync(cancellationToken);
+        
+        await context.SaveChangesAsync(cancellationToken);
+
+        return result;
+    }
+    
+    
 }

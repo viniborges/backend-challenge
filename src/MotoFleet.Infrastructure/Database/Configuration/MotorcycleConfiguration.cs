@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using MotoFleet.Domain.Motorcycles;
 
-namespace MotoFleet.Infrastructure.Repository;
+namespace MotoFleet.Infrastructure.Database.Configuration;
 
 internal sealed class MotorcycleConfiguration : IEntityTypeConfiguration<Motorcycle>
 {
