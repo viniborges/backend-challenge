@@ -31,23 +31,22 @@ builder.Services.AddScoped<DeleteMotorcycle>();
 builder.Services.AddScoped<CreateDeliveryPerson>();
 builder.Services.AddScoped<CreateRental>();
 builder.Services.AddScoped<GetByIdRental>();
+builder.Services.AddScoped<UpdateDevolutionRental>();
 builder.Services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
 
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-#pragma warning disable CA1303
-    Console.WriteLine("Running in development mode");
-#pragma warning restore CA1303
     app.UseSwagger();
     app.UseSwaggerUI();
     app.ApplyMigrations();
 }
 
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection();
 
 app.MapMotorcycleEndpoints();
 app.MapDeliveryPersonEndpoints();
+app.MapRentalEndpoints();
 
 await app.RunAsync();

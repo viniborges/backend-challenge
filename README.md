@@ -1,7 +1,9 @@
 # Desafio backend
-
-## Pendências
-- FluenteValidator
+Para executar o projeto, clone este repositório e rode o comando abaixo:
+```bash
+docker-compose up -d
+```
+Após isso, acesse o seguinte endereço: http://localhost:5000/swagger
 
 ## Requisitos não funcionais 
 - A aplicação deverá ser construida com .Net utilizando C#.

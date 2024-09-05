@@ -7,7 +7,7 @@ using MotoFleet.Domain.Rentals;
 
 namespace MotoFleet.Infrastructure.Database.Configuration;
 
-public class RentalConfiguration :IEntityTypeConfiguration<Rental>
+public class RentalConfiguration :IEntityTypeConfiguration<Rental> 
 {
     public void Configure(EntityTypeBuilder<Rental> builder)
     {

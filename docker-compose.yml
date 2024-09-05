@@ -5,12 +5,12 @@
     build:
       context: .
       dockerfile: src/MotoFleet.Api/Dockerfile
+    depends_on:
+      motofleet.database:
+        condition: service_healthy
     ports:
       - "5000:5000"
-      - "5001:5001"
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-    
+  
   motofleet.database:
     image: postgres:latest
     container_name: motofleet.database
@@ -20,5 +20,11 @@
       POSTGRES_DB: motofleet
     ports:
       - "5432:5432"
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}" ]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
     volumes:
       - ./.containers/motofleet-db:/var/lib/postgresql/data
